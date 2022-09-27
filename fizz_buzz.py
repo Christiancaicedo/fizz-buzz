@@ -13,27 +13,21 @@ def fizz_buzz(num: int) -> str:
         return("buzz")
     elif num % 3 == 0:
         return("fizz")
-    elif player_guess == 'next':
-        exit
     else:
-        return print("Sorry, that was the wrong answer. It is the next players turn")
+        return str(num)
 
+input("Play Fizz Buzz.   Press ENTER to start")
+print()
 
-for i in range(1, 101):
-        print(i)
-        player_guess = input("Enter if the number is either 'fizz' or 'buzz'. If the number is neither 'fizz' nor 'buzz', type 'next': ")
-        if player_guess == "fizz buzz":
-            if fizz_buzz(i) == "fizz buzz":
-                print("Correct! You win!")
-                break
-        elif player_guess == "fizz":
-            if fizz_buzz(i) == "fizz":
-                print("Correct! Guess again.")
-        elif player_guess == "buzz":
-            if fizz_buzz(i) == 'buzz':
-                print("Correct! Guess again.")
-        elif player_guess == 'next':
-            if fizz_buzz(i) != 'fizz' or 'buzz':
-                print("Correct! Guess again")
-        else:
-            player_guess = input("That is not an acceptable input, please try again: ")
+next_number = 0
+while next_number < 99:
+    next_number += 1
+    print(fizz_buzz(next_number))
+    next_number += 1
+    correct_answer = fizz_buzz(next_number)
+    players_answer = input("Your go: ")
+    if players_answer != correct_answer:
+        print(f"You lose, the correct answer was {correct_answer}")
+        break
+    else:
+        print(f"Well done, you reached {next_number}")
